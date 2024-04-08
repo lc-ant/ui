@@ -1,0 +1,94 @@
+<div translateNS="login" *ngIf="authMode">
+  <ng-container *ngIf="authMode === 'from-email'">
+    <!-- No specific tenant or account: search by email -->
+    <form (ngSubmit)="validateInputEmail()">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title><span translateKey="title"></span></mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <mat-progress-bar mode="indeterminate" *ngIf="loading"></mat-progress-bar>
+          <mat-form-field class="fill-width">
+            <mat-label translateKey="email"></mat-label>
+            <input name="email" matInput required [(ngModel)]="inputEmail" [disabled]="loading" (blur)="checkInputEmail()">
+            <mat-hint *ngIf="inputEmailError" class="error" [translateKey]="inputEmailError"></mat-hint>
+          </mat-form-field>
+        </mat-card-content>
+        <mat-card-actions align="end">
+          <button type="submit" mat-button [disabled]="loading || !inputEmailValid()" (click)="validateInputEmail()"><span translateKey="login-button"></span></button>
+        </mat-card-actions>
+      </mat-card>
+    </form>
+  </ng-container>
+
+  <ng-container *ngIf="authMode === 'internal' && tenant">
+    <!-- with internal authentication mode -->
+    <form (ngSubmit)="validateInputUsernameAndPassword()">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>{{tenant.displayName}}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <mat-progress-bar mode="indeterminate" *ngIf="loading"></mat-progress-bar>
+          <mat-form-field class="fill-width">
+            <mat-label translateKey="username"></mat-label>
+            <input name="username" matInput required [(ngModel)]="inputUsername" [disabled]="loading" (blur)="inputUsernameAndPasswordError = undefined">
+          </mat-form-field>
+          <mat-form-field class="fill-width">
+            <mat-label translateKey="password"></mat-label>
+            <input name="password" matInput required type="password" [(ngModel)]="inputPassword" [disabled]="loading" (blur)="inputUsernameAndPasswordError = undefined">
+            <mat-hint *ngIf="inputUsernameAndPasswordError" class="error" [translateKey]="inputUsernameAndPasswordError"></mat-hint>
+          </mat-form-field>
+        </mat-card-content>
+        <mat-card-actions align="end">
+          <button type="button" mat-button [disabled]="loading" (click)="switchAccount()"><span translateKey="switch-account-button"></span></button>
+          <button type="submit" mat-button [disabled]="loading || !inputUsernameAndPasswordValid()" (click)="validateInputUsernameAndPassword()"><span translateKey="login-button"></span></button>
+        </mat-card-actions>
+      </mat-card>
+    </form>
+  </ng-container>
+
+  <ng-container *ngIf="authMode === 'choose-account'">
+    TODO: account chooser
+  </ng-container>
+
+  <mat-card>
+    <mat-card-content>
+      <button mat-button [matMenuTriggerFor]="languageMenu">
+        <mat-icon>translate</mat-icon>
+        <span translateNS="header" translateKey="account-menu.language"></span>
+      </button>
+      <button mat-button [matMenuTriggerFor]="themeMenu">
+        <mat-icon>palette</mat-icon>
+        <span translateNS="header" translateKey="account-menu.theme"></span>
+      </button>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<mat-menu #themeMenu="matMenu">
+  <button mat-menu-item (click)="setTheme(LIGHT_THEME)">
+    <mat-icon>light_mode</mat-icon>
+    <span translateNS="header" translateKey="account-menu.theme-menu.light"></span>
+  </button>
+  <button mat-menu-item (click)="setTheme(DARK_THEME)">
+    <mat-icon>dark_mode</mat-icon>
+    <span translateNS="header" translateKey="account-menu.theme-menu.dark"></span>
+  </button>
+  <button mat-menu-item (click)="setTheme(SYSTEM_THEME)">
+    <mat-icon>tv_options_input_settings</mat-icon>
+    <span translateNS="header" translateKey="account-menu.theme-menu.system"></span>
+  </button>
+</mat-menu>
+
+<mat-menu #languageMenu="matMenu">
+  <button mat-menu-item (click)="setLocale('en')">
+    <img src="/assets/i18n/flags/en.png" alt="English" />
+    <span style="margin-left: 5px">English</span>
+  </button>
+  <button mat-menu-item (click)="setLocale('fr')">
+    <img src="/assets/i18n/flags/fr.png" alt="Français" />
+    <span style="margin-left: 5px">Français</span>
+  </button>
+</mat-menu>
+

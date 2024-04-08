@@ -1,0 +1,18 @@
+{
+  "fields": {
+    "publicId": "ID Public",
+    "displayName": "Nom",
+    "validityStart": "Début de validité",
+    "validityEnd": "Fin de validité"
+  },
+  "nav": {
+    "general-info": "Informations générales"
+  },
+  "tenant": "Tenant",
+  "tenants": "Tenants",
+  "new tenant": "Nouveau Tenant",
+  "selected tenant": "tenant sélectionné",
+  "selected tenants": "tenants sélectionnés",
+  "delete tenant confirmation": "Supprimer le tenant sélectionné ?",
+  "delete tenants confirmation": "Supprimer les tenants sélectionnés ?"
+}

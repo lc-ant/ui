@@ -1,0 +1,10 @@
+<div class="container {{view}}">
+  <div class="item" (click)="open()">
+    <div class="item-icon" *ngIf="icon">
+      <mat-icon>{{ icon }}</mat-icon>
+    </div>
+    <div class="item-label">
+      <div>{{ label }}</div>
+    </div>
+  </div>
+</div>

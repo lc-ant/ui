@@ -1,0 +1,21 @@
+:host {
+  ::ng-deep .mdc-list {
+    padding: 0;
+  }
+
+  --mat-expansion-container-shape: 0px;
+  --mat-expansion-header-expanded-state-height: 48px;
+
+  ::ng-deep .mat-expansion-panel-body {
+    padding: 0 0 0 8px;
+  }
+
+  .mat-expansion-panel {
+    box-shadow: none;
+    border-top: 1px solid var(--lca-background-color);
+  }
+}
+
+.parent {
+  --mdc-list-list-item-container-color: var(--lca-highlight-1-5-color);
+}

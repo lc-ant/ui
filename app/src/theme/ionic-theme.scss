@@ -1,0 +1,61 @@
+/* Core CSS required for Ionic components to work properly */
+@import "@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "@ionic/angular/css/normalize.css";
+@import "@ionic/angular/css/structure.css";
+@import "@ionic/angular/css/typography.css";
+@import "@ionic/angular/css/display.css";
+
+/* Optional CSS utils that can be commented out */
+@import "@ionic/angular/css/padding.css";
+@import "@ionic/angular/css/float-elements.css";
+@import "@ionic/angular/css/text-alignment.css";
+@import "@ionic/angular/css/text-transformation.css";
+@import "@ionic/angular/css/flex-utils.css";
+
+@mixin lca-to-ion-base-color($lca-color, $ion-color) {
+  --ion-#{$ion-color}-color: var(--lca-#{$lca-color}-color);
+  --ion-#{$ion-color}-color-rgb: var(--lca-#{$lca-color}-color-rgb);
+}
+@mixin lca-to-ion-theme-color($lca-color, $ion-color) {
+  --ion-color-#{$ion-color}: var(--lca-#{$lca-color}-color);
+  --ion-color-#{$ion-color}-rgb: var(--lca-#{$lca-color}-color-rgb);
+  --ion-color-#{$ion-color}-contrast: var(--lca-#{$lca-color}-contrast-color);
+  --ion-color-#{$ion-color}-contrast-rgb: var(--lca-#{$lca-color}-contrast-color-rgb);
+
+  .ion-color-#{$ion-color} {
+    --ion-color-base: var(--ion-color-#{$ion-color});
+    --ion-color-base-rgb: var(--ion-color-#{$ion-color}-rgb);
+    --ion-color-contrast: var(--ion-color-#{$ion-color}-contrast);
+    --ion-color-contrast-rgb: var(--ion-color-#{$ion-color}-contrast-rgb);
+  }
+}
+
+.md body {
+  @include lca-to-ion-base-color(background, background);
+  @include lca-to-ion-base-color(foreground, text);
+
+  @include lca-to-ion-theme-color(primary, primary);
+  @include lca-to-ion-theme-color(error, error);
+  @include lca-to-ion-theme-color(danger, danger);
+  @include lca-to-ion-theme-color(success, success);
+  @include lca-to-ion-theme-color(create, create);
+
+  --ion-toolbar-background: var(--lca-highlight-color);
+  --ion-toolbar-color: var(--lca-foreground-color);
+
+  .header-md {
+    box-shadow: none;
+    -webkit-box-shadow: none;
+  }
+}
+
+:root.lca-theme-light {
+
+  ion-header {
+    --ion-toolbar-background: var(--lca-primary-color);
+    --ion-toolbar-color: var(--lca-primary-contrast-color);
+  }
+
+}

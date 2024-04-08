@@ -1,0 +1,14 @@
+{
+  "title": "Sign in",
+  "email": "E-Mail",
+  "username": "Username",
+  "password": "Password",
+  "login-button": "Sign in",
+  "switch-account-button": "Switch account",
+  "errors": {
+    "invalid-email": "Invalid e-mail address",
+    "unknown-email": "Sorry but we don't know this e-mail address",
+    "invalid-credentials": "Invalid credentials",
+    "internal-error": "Internal error, please try again"
+  }
+}

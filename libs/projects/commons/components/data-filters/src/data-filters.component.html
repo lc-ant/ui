@@ -1,0 +1,6 @@
+<table>
+  <tr *ngFor="let filter of filters">
+    <td><span translateNS="{{filter.fieldDescription.nameNS}}" translateKey="{{filter.fieldDescription.nameKey}}"></span></td>
+    <td><lc-ant-commons-data-filter [filter]="filter"></lc-ant-commons-data-filter></td>
+  </tr>
+</table>

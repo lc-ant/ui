@@ -1,0 +1,9 @@
+<ng-container *ngIf="(breadcrumb$ | async) as elements">
+  <ng-container *ngFor="let element of elements; let index = index">
+    <ng-container *ngIf="index > 0">
+      <mat-icon>chevron_right</mat-icon>
+    </ng-container>
+    <mat-icon *ngIf="element.icon">{{element.icon}}</mat-icon>
+    <a [routerLink]="element.route">{{ element.label$ | async }}</a>
+  </ng-container>
+</ng-container>

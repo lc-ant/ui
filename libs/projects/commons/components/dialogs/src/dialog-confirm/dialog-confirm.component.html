@@ -1,0 +1,14 @@
+<lc-ant-commons-dialog-inline #dialogInline>
+  <ng-template>
+    <ng-container *ngIf="title">
+      <mat-toolbar mat-dialog-title [color]="color">{{ title }}</mat-toolbar>
+    </ng-container>
+    <ng-container *ngIf="message">
+      <mat-dialog-content style="padding-top: 24px">{{ message }}</mat-dialog-content>
+    </ng-container>
+    <mat-dialog-actions>
+      <button mat-button mat-dialog-close><span translateNS="core" translateKey="no"></span></button>
+      <button mat-button [color]="color" (click)="confirmed.emit(null)"><span translateNS="core" translateKey="yes"></span></button>
+    </mat-dialog-actions>
+  </ng-template>
+</lc-ant-commons-dialog-inline>

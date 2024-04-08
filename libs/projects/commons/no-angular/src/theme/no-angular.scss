@@ -1,0 +1,141 @@
+:root {
+  --lca-no-angular-table-header-cell-padding-left: 8px;
+  --lca-no-angular-table-header-cell-padding-right: 8px;
+  --lca-no-angular-table-header-cell-padding-top: 8px;
+  --lca-no-angular-table-header-cell-padding-bottom: 8px;
+
+  --lca-no-angular-table-cell-padding-left: 8px;
+  --lca-no-angular-table-cell-padding-right: 8px;
+  --lca-no-angular-table-cell-padding-top: 8px;
+  --lca-no-angular-table-cell-padding-bottom: 8px;
+
+  --lca-no-angular-checkbox-size: 18px;
+}
+
+.NoAngularTable {
+  border: 1px solid var(--mat-table-background-color);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  .TableHeaderRow {
+    flex: none;
+    background-color: var(--mat-table-background-color);
+    color: var(--mat-table-header-headline-color);
+    font-family: var(--mat-table-header-headline-font);
+    font-size: var(--mat-table-header-headline-size);
+    font-weight: var(--mat-table-header-headline-weight);
+    min-height: 24px;
+    border-bottom: 1px solid var(--lca-highlight-color);
+    box-shadow: 0px 1px 2px 0px var(--lca-highlight-color);
+
+    .TableHeaderCell {
+      > * {
+        flex: 1 1 100%;
+      }
+
+      padding-left: var(--lca-no-angular-table-header-cell-padding-left);
+      padding-right: var(--lca-no-angular-table-header-cell-padding-right);
+      padding-top: var(--lca-no-angular-table-header-cell-padding-top);
+      padding-bottom: var(--lca-no-angular-table-header-cell-padding-bottom);
+    }
+  }
+
+  .TableDataContainer {
+    flex: 1 1 100%;
+    overflow: auto;
+
+    .TableDataRow {
+      color: var(--mat-table-row-item-label-text-color);
+      font-size: var(--mat-table-row-item-label-text-size);
+      font-weight: var(--mat-table-row-item-label-text-weight);
+
+      &:not(:last-child) {
+        border-bottom: 1px solid var(--lca-highlight-0-5-color);
+      }
+
+      &:hover {
+        background-color: var(--lca-hover-color);
+      }
+
+      .TableDataCell {
+        > * {
+          flex: 1 1 100%;
+        }
+
+        padding-left: var(--lca-no-angular-table-cell-padding-left);
+        padding-right: var(--lca-no-angular-table-cell-padding-right);
+        padding-top: var(--lca-no-angular-table-cell-padding-top);
+        padding-bottom: var(--lca-no-angular-table-cell-padding-bottom);
+      }
+    }
+  }
+}
+
+.NoAngularCheckbox {
+  width: var(--lca-no-angular-checkbox-size);
+  height: var(--lca-no-angular-checkbox-size);
+  min-width: var(--lca-no-angular-checkbox-size);
+  min-height: var(--lca-no-angular-checkbox-size);
+  position: relative;
+
+  &:hover:not(.disabled):not(.checked):not(.indeterminate) {
+    background-color: var(--lca-hover-color);
+  }
+
+  input {
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+    cursor: inherit;
+  }
+
+  > div {
+    position: absolute;
+    width: var(--lca-no-angular-checkbox-size);
+    height: var(--lca-no-angular-checkbox-size);
+    border: 2px solid currentColor;
+    border-radius: 2px;
+    pointer-events: none;
+    stroke: none;
+    stroke-width: 3.12px;
+    stroke-dasharray: 29.7833385;
+
+    > div {
+      position: absolute;
+      top: calc(50% - 1px);
+      height: 0;
+      width: calc(100% - 2px);
+      left: 1px;
+      border: 1px solid transparent;
+    }
+  }
+
+  &.disabled {
+    color: var(--lca-disabled-foreground-color);
+    background-color: var(--lca-disabled-background-color);
+  }
+
+  &.checked {
+    background-color: var(--lca-primary-color);
+    > div {
+      border-color: var(--lca-primary-color);
+      stroke: var(--lca-primary-contrast-color);
+    }
+  }
+
+  &.indeterminate {
+    background-color: var(--lca-primary-color);
+    > div {
+      border-color: var(--lca-primary-color);
+      > div {
+        border-color: var(--lca-primary-contrast-color);
+      }
+    }
+  }
+}

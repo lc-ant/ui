@@ -1,0 +1,28 @@
+:host {
+  display: flex;
+  flex-direction: column;
+}
+
+app-header {
+  flex: none;
+}
+
+mat-sidenav-container {
+  flex: 1 1 100%;
+  background-color: transparent;
+
+  mat-sidenav-content {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+
+    lc-ant-navigation-breadcrumb {
+      flex: none;
+    }
+
+    ion-router-outlet {
+      flex: 1 1 100%;
+      position: relative;
+    }
+  }
+}

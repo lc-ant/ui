@@ -1,0 +1,34 @@
+<ion-grid [formGroup]="form" translateNS="admin-tenant">
+  <ion-row>
+    <ion-col size-md="6" size-sm="12">
+      <mat-form-field class="fill-width">
+        <mat-label translateKey="fields.publicId"></mat-label>
+        <input formControlName="publicId" matInput>
+      </mat-form-field>
+    </ion-col>
+    <ion-col size-md="6" size-sm="12">
+      <mat-form-field class="fill-width">
+        <mat-label translateKey="fields.displayName"></mat-label>
+        <input formControlName="displayName" matInput>
+      </mat-form-field>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size-md="6" size-sm="12">
+      <mat-form-field class="fill-width">
+        <mat-label translateKey="fields.validityStart"></mat-label>
+        <input matInput [matDatepicker]="pickerValidityStart" formControlName="validityStart"/>
+        <mat-datepicker-toggle matSuffix [for]="pickerValidityStart"></mat-datepicker-toggle>
+        <mat-datepicker #pickerValidityStart></mat-datepicker>
+      </mat-form-field>
+    </ion-col>
+    <ion-col size-md="6" size-sm="12">
+      <mat-form-field class="fill-width">
+        <mat-label translateKey="fields.validityEnd"></mat-label>
+        <input matInput [matDatepicker]="pickerValidityEnd" formControlName="validityEnd"/>
+        <mat-datepicker-toggle matSuffix [for]="pickerValidityEnd"></mat-datepicker-toggle>
+        <mat-datepicker #pickerValidityEnd></mat-datepicker>
+      </mat-form-field>
+    </ion-col>
+  </ion-row>
+</ion-grid>

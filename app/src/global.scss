@@ -1,0 +1,65 @@
+@import "../node_modules/@lc-ant/commons/styles/no-angular.scss";
+
+.center-screen {
+  flex: 1 1 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.fill-width {
+  width: 100%;
+}
+
+mat-hint.error {
+  color: var(--mat-form-field-error-text-color);
+}
+
+mat-toolbar {
+  .left-side {
+    flex: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 16px;
+    font-weight: normal;
+  }
+  .middle {
+    flex: 1 1 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  .right-side {
+    flex: 1 1 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    font-size: 16px;
+    font-weight: normal;
+  }
+  .middle ~ .right-side {
+    flex: none;
+  }
+}
+
+mat-form-field.no-subscript {
+  --mat-form-field-subscript-text-line-height: 0px;
+  .mat-mdc-form-field-hint-wrapper {
+    padding: 0;
+  }
+  .mat-mdc-form-field-bottom-align::before {
+    height: 0;
+  }
+}
+
+mat-form-field.small {
+  --mat-form-field-container-height: 24px;
+  --mat-form-field-container-vertical-padding: 2px;
+  font-size: 14px;
+  .mdc-text-field {
+    padding: 0 8px;
+  }
+}

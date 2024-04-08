@@ -1,0 +1,33 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title translateNS="admin-tenant" translateKey="tenants"></mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <lc-ant-commons-tenant-list #table
+      [enableSelection]="canDelete"
+      [tenantSelectable]="noRoot"
+      (selectionChanged)="selectionChanged($event)"
+    ></lc-ant-commons-tenant-list>
+  </mat-card-content>
+</mat-card>
+<mat-toolbar>
+  <div class="left-side" *ngIf="selection.length > 0">
+    <div style="padding: 2px 10px 5px 10px">
+      {{selection.length}} <span translateNS="admin-tenant" [translateKey]="selection.length > 1 ? 'selected tenants' : 'selected tenant'"></span>:
+    </div>
+    <ng-container *ngIf="canDelete">
+      <button mat-button color="danger" *ngIf="canDelete" (click)="confirmDelete.open()"><span translateNS="core" translateKey="delete"></span></button>
+      <lc-ant-commons-dialog-confirm #confirmDelete
+        color="danger"
+        title="{{ 'core.delete' | translate }}"
+        message="{{ 'admin-tenant.' + (selection.length > 1 ? 'delete tenants confirmation' : 'delete tenant confirmation') | translate }}"
+        (confirmed)="deleteSelection()"
+      >
+      </lc-ant-commons-dialog-confirm>
+    </ng-container>
+  </div>
+
+  <div class="right-side">
+    <button mat-button color="create" (click)="newTenant()" *ngIf="canCreate"><span translateNS="admin-tenant" translateKey="new tenant"></span></button>
+  </div>
+</mat-toolbar>

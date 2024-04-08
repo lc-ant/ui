@@ -1,0 +1,10 @@
+<app-header (menuToggle)="sidenav.toggle()"></app-header>
+<mat-sidenav-container>
+  <mat-sidenav #sidenav mode="over">
+    <lc-ant-navigation-menu></lc-ant-navigation-menu>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <lc-ant-navigation-breadcrumb></lc-ant-navigation-breadcrumb>
+    <ion-router-outlet></ion-router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

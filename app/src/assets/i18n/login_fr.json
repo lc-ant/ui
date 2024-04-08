@@ -1,0 +1,14 @@
+{
+  "title": "Connexion",
+  "email": "E-Mail",
+  "username": "Nom d'utilisateur",
+  "password": "Mot de passe",
+  "login-button": "Se Connecter",
+  "switch-account-button": "Changer de compte",
+  "errors": {
+    "invalid-email": "Adresse e-mail invalide",
+    "unknown-email": "Désolé mais nous ne connaissons pas cette adresse e-mail",
+    "invalid-credentials": "Nom d'utilisateur ou mot de passe invalide",
+    "internal-error": "Erreur interne, veuillez réessayer"
+  }
+}

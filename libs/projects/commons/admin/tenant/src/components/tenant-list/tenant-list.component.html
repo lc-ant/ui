@@ -1,0 +1,10 @@
+<lc-ant-commons-data-table #table
+  [dataType]="tenantType"
+  [searchByCriteria]="searchByCriteria"
+  [searchByText]="searchByText"
+  [itemLink]="itemLink"
+  [enableSelection]="enableSelection"
+  [dataSelectable]="tenantSelectable"
+  (selectionChanged)="tenantSelectionChanged($event)"
+></lc-ant-commons-data-table>
+

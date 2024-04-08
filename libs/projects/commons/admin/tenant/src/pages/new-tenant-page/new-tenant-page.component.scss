@@ -1,0 +1,11 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  align-items: center;
+}
+
+.form-container {
+  overflow: auto;
+  padding: 10px;
+}

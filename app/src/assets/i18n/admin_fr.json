@@ -1,0 +1,13 @@
+{
+  "nav": {
+    "root": "Administration",
+    "tenant": "Tenants",
+    "users": "Gestion des Utilisateurs",
+    "categories": {
+      "platform": "Platforme Lc Ant",
+      "current-tenant": {
+        "general-admin": "Général"
+      }
+    }
+  }
+}

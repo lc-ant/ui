@@ -1,0 +1,49 @@
+<mat-toolbar color="{{color$ | async}}">
+  <button mat-icon-button (click)="toggleMenu()"><mat-icon>menu</mat-icon></button>
+  <span class="app-title" (click)="goHome()">Lc Ant</span>
+  <span class="spacer"></span>
+  <div class="right-area">
+    <button mat-icon-button *ngIf="user" class="avatar" [matMenuTriggerFor]="userMenu">
+      <img [src]="getAvatar()" alt="avatar"/>
+      <mat-menu #userMenu="matMenu" class="user-menu">
+        <div style="padding: 5px 15px; border-bottom: 2px solid var(--lca-highlight-color);">{{user.firstName + ' ' + user.lastName}}</div>
+        <button mat-menu-item [matMenuTriggerFor]="themeMenu">
+          <mat-icon>palette</mat-icon>
+          <span translateNS="header" translateKey="account-menu.theme"></span>
+        </button>
+        <button mat-menu-item [matMenuTriggerFor]="languageMenu">
+          <mat-icon>translate</mat-icon>
+          <span translateNS="header" translateKey="account-menu.language"></span>
+        </button>
+        <button mat-menu-item (click)="logout()">
+          <mat-icon>logout</mat-icon>
+          <span translateNS="header" translateKey="account-menu.logout"></span>
+        </button>
+      </mat-menu>
+      <mat-menu #themeMenu="matMenu">
+        <button mat-menu-item (click)="setTheme(LIGHT_THEME)">
+          <mat-icon>light_mode</mat-icon>
+          <span translateNS="header" translateKey="account-menu.theme-menu.light"></span>
+        </button>
+        <button mat-menu-item (click)="setTheme(DARK_THEME)">
+          <mat-icon>dark_mode</mat-icon>
+          <span translateNS="header" translateKey="account-menu.theme-menu.dark"></span>
+        </button>
+        <button mat-menu-item (click)="setTheme(SYSTEM_THEME)">
+          <mat-icon>tv_options_input_settings</mat-icon>
+          <span translateNS="header" translateKey="account-menu.theme-menu.system"></span>
+        </button>
+      </mat-menu>
+      <mat-menu #languageMenu="matMenu">
+        <button mat-menu-item (click)="setLocale('en')">
+          <img src="/assets/i18n/flags/en.png" alt="English" />
+          <span style="margin-left: 5px">English</span>
+        </button>
+        <button mat-menu-item (click)="setLocale('fr')">
+          <img src="/assets/i18n/flags/fr.png" alt="Français" />
+          <span style="margin-left: 5px">Français</span>
+        </button>
+      </mat-menu>
+    </button>
+  </div>
+</mat-toolbar>

@@ -1,0 +1,10 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+lc-ant-commons-no-angular-component-wrapper {
+  flex: 1 1 100%;
+  overflow: hidden;
+}

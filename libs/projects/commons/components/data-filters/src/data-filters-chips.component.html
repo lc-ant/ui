@@ -1,0 +1,13 @@
+<ng-container [ngSwitch]="hasFilters$ | async">
+  <span *ngSwitchCase="false" translateNS="filters" translateKey="no filter"></span>
+  <ng-container *ngSwitchCase="true">
+    <ng-container *ngFor="let filter of filters">
+      <ng-container *ngIf="!filter.valueFilter$.value.isEmpty()">
+        <mat-chip removable="true" color="primary" highlighted="true">
+          <span>{{filter.description(i18n) | async}}</span>
+          <mat-icon matChipRemove (click)="filter.valueFilter$.value.clear()">cancel</mat-icon>
+        </mat-chip>
+      </ng-container>
+    </ng-container>
+  </ng-container>
+</ng-container>

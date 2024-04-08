@@ -1,0 +1,63 @@
+<mat-toolbar>
+  <div *ngIf="element" class="page-title">
+    <mat-icon *ngIf="element.icon">{{element.icon}}</mat-icon>
+    <span>{{ element.label$ | async }}</span>
+  </div>
+  <div class="header-spacer"></div>
+  <div class="header-right-area">
+    <mat-button-toggle-group (change)="selectViewType($event)">
+      <mat-button-toggle value="small-row"><mat-icon>list</mat-icon></mat-button-toggle>
+      <mat-button-toggle value="small-badge"><mat-icon>apps</mat-icon></mat-button-toggle>
+      <mat-button-toggle value="large-badge"><mat-icon>grid_view</mat-icon></mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+</mat-toolbar>
+<div class="page-content">
+  <ng-container *ngIf="navigation">
+    <ng-container *ngTemplateOutlet="contentTemplate; context: { elements: navigation.rootElements, categories: navigation.categories }"></ng-container>
+  </ng-container>
+</div>
+
+<ng-template #itemTemplate let-element="element">
+  <lc-ant-commons-navigation-item
+    [icon]="element.icon"
+    label="{{element.label$ | async}}"
+    [route]="element.route"
+    [view]="viewType"
+  ></lc-ant-commons-navigation-item>
+</ng-template>
+
+<ng-template #itemListTemplate let-elements="elements">
+  <ion-grid>
+    @for (element of elements; track element.route) {
+      <ion-col><ng-container *ngTemplateOutlet="itemTemplate; context: {element: element}"></ng-container></ion-col>
+    }
+  </ion-grid>
+</ng-template>
+
+<ng-template #categoryTemplate let-category="category">
+  <div class="category-title">
+    <div class="title-line"></div>
+    <div class="title-text">
+      <div>{{ category.category.labelProvider$(injector) | async}}</div>
+    </div>
+  </div>
+  <div class="category-content">
+    <ng-container *ngTemplateOutlet="contentTemplate; context: { elements: category.elements, categories: category.subCategories }"></ng-container>
+  </div>
+</ng-template>
+
+<ng-template #contentTemplate let-elements="elements" let-categories="categories">
+  <ng-container *ngIf="elements.length > 0">
+    <ng-container *ngTemplateOutlet="itemListTemplate; context: { elements: elements }"></ng-container>
+  </ng-container>
+  <ng-container *ngIf="categories.length > 0">
+    <ng-container *ngTemplateOutlet="categoryListTemplate; context: { categories: categories }"></ng-container>
+  </ng-container>
+</ng-template>
+
+<ng-template #categoryListTemplate let-categories="categories">
+  @for (subCategory of categories; track subCategory.category.id) {
+    <ng-container *ngTemplateOutlet="categoryTemplate; context: { category: subCategory }"></ng-container>
+  }
+</ng-template>

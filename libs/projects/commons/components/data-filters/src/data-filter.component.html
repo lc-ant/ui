@@ -1,0 +1,9 @@
+<ng-container *ngIf="filter">
+  <ng-container [ngSwitch]="filter.fieldDescription.type">
+    <ng-container *ngSwitchCase="'string'"><lc-ant-commons-string-filter [filter]="filter"></lc-ant-commons-string-filter>
+    </ng-container>
+    <ng-container *ngSwitchDefault>
+      <span>unknown type {{ filter.fieldDescription.type }}</span>
+    </ng-container>
+  </ng-container>
+</ng-container>

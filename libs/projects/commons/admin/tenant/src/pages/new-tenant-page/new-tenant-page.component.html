@@ -1,0 +1,15 @@
+<div class="form-container">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title translateNS="admin-tenant" translateKey="new tenant"></mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <lc-ant-commons-tenant-form [tenant]="tenant" (tenantChanged)="tenantChanged($event)" [disabled]="saving" #form></lc-ant-commons-tenant-form>
+    </mat-card-content>
+  </mat-card>
+</div>
+<mat-toolbar>
+  <div class="right-side">
+    <button mat-button color="create" [disabled]="saving || !canSave()" (click)="save()"><span translateNS="core" translateKey="create"></span></button>
+  </div>
+</mat-toolbar>

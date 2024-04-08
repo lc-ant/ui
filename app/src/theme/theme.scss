@@ -1,0 +1,94 @@
+/* Define variable for system preference */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --lca-system-theme: dark;
+  }
+}
+@media (prefers-color-scheme: light) {
+  :root {
+    --lca-system-theme: light;
+  }
+}
+
+/* Functions */
+@mixin define-color($color-name, $red, $green, $blue) {
+  --lca-#{$color-name}-color-rgb: #{$red}, #{$green}, #{$blue};
+  --lca-#{$color-name}-color: rgb(var(--lca-#{$color-name}-color-rgb));
+}
+
+@mixin define-color-with-contrast($color-name, $red, $green, $blue, $contrast-red, $contrast-green, $contrast-blue) {
+  @include define-color($color-name, $red, $green, $blue);
+  @include define-color(#{$color-name}-contrast, $contrast-red, $contrast-green, $contrast-blue);
+}
+
+
+/* Colors for light theme */
+
+:root.lca-theme-light {
+  @include define-color(background, 255, 255, 255);
+  @include define-color(foreground, 0, 0, 0);
+
+  @include define-color-with-contrast(error, 250, 60, 60, 255, 255, 255);
+  @include define-color-with-contrast(danger, 250, 60, 60, 255, 255, 255);
+
+  @include define-color-with-contrast(success, 80, 176, 80, 255, 255, 255);
+  @include define-color-with-contrast(create, 80, 176, 80, 255, 255, 255);
+
+  --lca-highlight-alpha: 0.08;
+  --lca-highlight-color-rgb: 0, 0, 0;
+
+  @include define-color(context-menu-background, 240, 240, 240);
+  @include define-color(dialog-background, 240, 240, 240);
+  @include define-color(elevated-background, 255, 255, 255);
+  --lca-elevated-shadow-color: var(--lca-highlight-1-5-color);
+}
+
+:root.lca-theme-dark {
+  @include define-color(background, 0, 0, 0);
+  @include define-color(foreground, 255, 255, 255);
+
+  @include define-color-with-contrast(error, 250, 60, 60, 255, 255, 255);
+  @include define-color-with-contrast(danger, 250, 60, 60, 255, 255, 255);
+
+  @include define-color-with-contrast(success, 80, 176, 80, 255, 255, 255);
+  @include define-color-with-contrast(create, 80, 176, 80, 255, 255, 255);
+
+  --lca-highlight-alpha: 0.1;
+  --lca-highlight-color-rgb: 255, 255, 255;
+
+  @include define-color(context-menu-background, 32, 32, 32);
+  @include define-color(dialog-background, 32, 32, 32);
+  @include define-color(elevated-background, 32, 32, 32);
+  --lca-elevated-shadow-color: var(--lca-highlight-color);
+}
+
+/* TODO from theme */
+:root.lca-theme-light {
+  @include define-color-with-contrast(primary, 33, 150, 243, 255, 255, 255); /* from material palette Blue 500 */
+  --lca-highlight-color-rgb: 8, 38, 60; /* primary color divided by 4 */
+}
+:root.lca-theme-dark {
+  @include define-color-with-contrast(primary, 33, 150, 243, 255, 255, 255); /* from material palette Blue 500 */
+}
+
+
+:root {
+  --lca-highlight-color: rgba(var(--lca-highlight-color-rgb), var(--lca-highlight-alpha));
+  --lca-highlight-1-5-color: rgba(var(--lca-highlight-color-rgb), calc(var(--lca-highlight-alpha) * 1.5));
+  --lca-highlight-2-color: rgba(var(--lca-highlight-color-rgb), calc(var(--lca-highlight-alpha) * 2));
+  --lca-highlight-3-color: rgba(var(--lca-highlight-color-rgb), calc(var(--lca-highlight-alpha) * 3));
+  --lca-highlight-0-5-color: rgba(var(--lca-highlight-color-rgb), calc(var(--lca-highlight-alpha) * 0.5));
+
+  --lca-disabled-background-color: rgba(var(--lca-foreground-color-rgb), 0.1);
+  --lca-disabled-foreground-color: rgba(var(--lca-foreground-color-rgb), 0.5);
+
+  --lca-hover-color: var(--lca-highlight-0-5-color);
+}
+
+body {
+  background-color: var(--lca-background-color);
+  color: var(--lca-foreground-color);
+}
+
+@import 'ionic-theme';
+@import 'material-theme';

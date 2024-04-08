@@ -1,0 +1,27 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+mat-card {
+  flex: 1 1 100%;
+  overflow: hidden;
+  margin: 10px;
+
+  mat-card-content {
+    flex: 1 1 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+
+    lc-ant-commons-tenant-list {
+      flex: 1 1 100%;
+      overflow: hidden;
+    }
+  }
+}
+
+ion-footer {
+  flex: none;
+}

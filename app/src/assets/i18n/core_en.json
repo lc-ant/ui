@@ -1,0 +1,20 @@
+{
+  "id": "ID",
+  "version": "Version",
+
+  "cancel": "Cancel",
+  "close": "Close",
+  "create": "Create",
+  "delete": "Delete",
+  "error": "Error",
+  "no": "No",
+  "save": "Save",
+  "search": "Search",
+  "yes": "Yes",
+
+  "second": "second",
+  "seconds": "seconds",
+
+  "disconnected from server, retrying in": "Disconnected from server, retrying in",
+  "reconnecting": "Reconnecting"
+}

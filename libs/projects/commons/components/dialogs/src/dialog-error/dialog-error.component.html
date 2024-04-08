@@ -1,0 +1,14 @@
+<lc-ant-commons-dialog-inline #dialogInline>
+  <ng-template>
+    <mat-toolbar mat-dialog-title color="error"><span translateNS="core" translateKey="error"></span></mat-toolbar>
+    <ng-container *ngIf="message">
+      <mat-dialog-content style="padding-top: 24px">{{ message }}</mat-dialog-content>
+    </ng-container>
+    <ng-container *ngIf="apiError">
+      <mat-dialog-content style="padding-top: 24px">{{ apiError.errorMessage }}</mat-dialog-content>
+    </ng-container>
+    <mat-dialog-actions>
+      <button mat-button mat-dialog-close><span translateNS="core" translateKey="close"></span></button>
+    </mat-dialog-actions>
+  </ng-template>
+</lc-ant-commons-dialog-inline>

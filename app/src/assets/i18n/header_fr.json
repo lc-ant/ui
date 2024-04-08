@@ -1,0 +1,12 @@
+{
+  "account-menu": {
+    "theme": "Thème",
+    "theme-menu": {
+      "light": "Lumineux",
+      "dark": "Sombre",
+      "system": "Préférences du système"
+    },
+    "language": "Langage",
+    "logout": "Se Déconnecter"
+  }
+}

@@ -1,0 +1,40 @@
+<mat-nav-list>
+  @for (parent of parents; track parent.route) {
+    <ng-container *ngTemplateOutlet="itemTemplate; context: {element: parent, isParent: true, isCurrent: false}"></ng-container>
+  }
+  @if (current) {
+    <ng-container *ngTemplateOutlet="itemTemplate; context: {element: current, isParent: false, isCurrent: true}"></ng-container>
+    @if (navigation) {
+      @for (category of navigation.categories; track category.category.id) {
+        <ng-container *ngTemplateOutlet="categoryTemplate; context: {category: category}"></ng-container>
+      }
+      @for (child of navigation.rootElements; track child.route) {
+        <ng-container *ngTemplateOutlet="itemTemplate; context: {element: child, isParent: false, isCurrent: false}"></ng-container>
+      }
+    }
+  }
+</mat-nav-list>
+
+<ng-template #itemTemplate let-element="element" let-isParent="isParent" let-isCurrent="isCurrent">
+  <mat-list-item [ngClass]="{'parent': isParent, 'mat-primary': isCurrent}">
+    <mat-icon matListItemIcon *ngIf="element.icon">{{element.icon}}</mat-icon>
+    <a matListItemTitle [routerLink]="element.route">{{ element.label$ | async }}</a>
+  </mat-list-item>
+  <mat-divider></mat-divider>
+</ng-template>
+
+<ng-template #categoryTemplate let-category="category">
+  <mat-expansion-panel [expanded]="true">
+    <mat-expansion-panel-header>
+      <mat-panel-title>{{ category.category.labelProvider$(injector) | async }}</mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-nav-list>
+      @for (subCategory of category.subCategories; track subCategory.category.id) {
+        <ng-container *ngTemplateOutlet="categoryTemplate; context: {category: subCategory}"></ng-container>
+      }
+      @for (element of category.elements; track element.route) {
+        <ng-container *ngTemplateOutlet="itemTemplate; context: {element: element, isParent: false, isCurrent: false}"></ng-container>
+      }
+    </mat-nav-list>
+  </mat-expansion-panel>
+</ng-template>

@@ -1,0 +1,7 @@
+{
+  "name": "lc-ant",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

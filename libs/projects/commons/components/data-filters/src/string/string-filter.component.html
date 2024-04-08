@@ -1,0 +1,4 @@
+<span translateNS="filters" translateKey="string.contains"></span>
+<mat-form-field class="no-subscript small" *ngIf="value$">
+  <input name="value" matInput [ngModel]="value$.value" (ngModelChange)="valueChange($event)">
+</mat-form-field>

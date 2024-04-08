@@ -1,0 +1,21 @@
+:host {
+  background-color: var(--lca-highlight-0-5-color);
+  padding: 5px 10px;
+  box-shadow: 0px 0px 5px 1px var(--lca-highlight-color);
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+a {
+  padding: 3px 0px;
+}
+
+mat-icon {
+  width: 16px;
+  height: 16px;
+  font-size: 16px;
+  margin-right: 5px;
+  color: rgba(var(--lca-foreground-color-rgb), 0.7);
+}
